@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="IT & Robotics Club — Innovate, Build, and Transform the future with technology and robotics."
+    />
+    <title>IT & Robotics Club · merged & refined</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/IT-club.css" />
+  </head>
+  <body>
+    <!-- ===== TOP NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+      <a href="#" class="navbar__brand">
+        <span class="navbar__brand-icon">⚙️</span>
+        IT & Robotics Club
+      </a>
+
+      <ul class="navbar__links" id="navLinks">
+        <li>
+          <a href="#" class="active"><span class="nav-icon">🏠</span> Home</a>
+        </li>
+        <li>
+          <a href="#content"><span class="nav-icon">ℹ️</span> Info</a>
+        </li>
+        <li>
+          <a href="#events"><span class="nav-icon">📅</span> Events</a>
+        </li>
+        <li>
+          <a href="#members"><span class="nav-icon">👥</span> Members</a>
+        </li>
+        <li>
+          <a href="#contact"><span class="nav-icon">✉️</span> Contact</a>
+        </li>
+        <!-- Login -->
+        <li>
+          <a href="IT-club-login.html" class="navbar__login"
+            ><span class="nav-icon">🔐</span> Login</a
+          >
+        </li>
+      </ul>
+
+      <div class="navbar__hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+      <div class="hero__badge">🚀 Welcome to the Club</div>
+      <h1>
+        Innovate. Build.<br /><span class="gradient-text">Transform.</span>
+      </h1>
+      <p class="hero__subtitle">
+        Join the IT & Robotics Club — where ideas meet technology. Build
+        projects, compete, and shape the future together.
+      </p>
+      <div class="hero__actions">
+        <a href="#content" class="hero__btn hero__btn--primary">Learn More</a>
+        <a href="IT-club-login.html" class="hero__btn hero__btn--outline"
+          >Join Now →</a
+        >
+      </div>
+    </section>
+
+    <!-- ===== CONTENT SECTION – translucent cards with dark bold sidebars ===== -->
+    <section id="content" class="content-section">
+      <div class="section-heading">
+        <h2>⚡ latest updates</h2>
+      </div>
+
+      <!-- paragraph card 1 (left bar) -->
+      <div class="paragraph-card">
+        <p class="left">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit aut
+          quaerat unde in? Possimus voluptas neque dolor provident
+          exercitationem! Rerum esse maxime animi reprehenderit eos autem?
+          Doloremque facere amet, rem cupiditate harum odio laborum distinctio
+          quidem perspiciatis, vero culpa, consectetur ratione velit. Soluta ad
+          exercitationem impedit esse maxime? Autem perspiciatis fugiat qui
+          illo, magnam minima sint, corrupti incidunt voluptatibus aspernatur
+          praesentium cum, atque maxime.
+        </p>
+      </div>
+
+      <!-- paragraph card 2 (right bar) -->
+      <div class="paragraph-card">
+        <p class="right">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
+          quaerat rem laudantium maiores dolor, illum voluptate repudiandae
+          debitis nulla dignissimos odit! Ab dolorem excepturi aspernatur iste
+          corrupti asperiores commodi natus cum repellat nisi provident ad
+          reiciendis nostrum, maxime, dicta accusamus nemo exercitationem in.
+          Aliquid maiores, sint ullam, accusamus cumque fugiat excepturi ipsum
+          explicabo, aspernatur saepe placeat labore! Harum id dicta, quas
+          voluptatum repellendus saepe aliquam recusandae molestias quo nesciunt
+          incidunt eum qui libero laborum nihil aperiam, explicabo fugiat autem
+          quis. Iste iure laboriosam in a quidem perspiciatis sapiente molestias
+          consequatur assumenda rerum temporibus illum blanditiis fuga, incidunt
+          id quos reprehenderit neque deserunt earum error.
+        </p>
+      </div>
+
+      <!-- paragraph card 3 (left bar) -->
+      <div class="paragraph-card">
+        <p class="left">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
+          omnis, tempora rerum velit eaque vel perspiciatis autem illum
+          officiis, possimus cupiditate nobis maiores ipsam voluptate ipsa
+          asperiores. Mollitia ut reprehenderit sunt eveniet, accusantium
+          adipisci voluptates cum dolor! Modi excepturi inventore sint
+          laboriosam, quod cupiditate voluptates eaque commodi dolore eligendi
+          fuga, obcaecati earum doloremque perspiciatis suscipit consectetur
+          sunt corporis omnis. Hic cupiditate temporibus voluptatem quisquam
+          laborum mollitia. Eos repudiandae sint esse tempora ut eaque sunt
+          asperiores nobis quasi qui culpa voluptate officia quas dolore
+          distinctio dolores aut, reiciendis fugiat incidunt. Ullam suscipit
+          incidunt dolor perspiciatis tempora, culpa accusantium porro esse
+          error?
+        </p>
+      </div>
+    </section>
+
+    <script>
+      // ---- Mobile menu toggle ----
+      function toggleMenu() {
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+        hamburger.classList.toggle("open");
+        navLinks.classList.toggle("open");
+      }
+
+      // ---- Navbar scroll effect ----
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        navbar.classList.toggle("scrolled", window.scrollY > 30);
+      });
+
+      // ---- Close mobile menu on link click ----
+      document.querySelectorAll(".navbar__links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          const hamburger = document.getElementById("hamburger");
+          const navLinks = document.getElementById("navLinks");
+          hamburger.classList.remove("open");
+          navLinks.classList.remove("open");
+        });
+      });
+    </script>
+  </body>
+</html>
