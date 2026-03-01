@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="IT & Robotics Club – What we do: workshops, competitions, open source and more."
+    />
+    <title>IT & Robotics Club · What We Do</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="css/IT-club.css" />
+    <style>
+      /* Additional tweaks for info page layout */
+      .info-cards-container {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .info-card {
+        background: linear-gradient(
+          145deg,
+          rgba(23, 25, 35, 0.9),
+          rgba(15, 17, 24, 0.8)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          border-color 0.3s ease;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+      }
+
+      .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border-color: rgba(56, 189, 248, 0.3);
+      }
+
+      .info-card-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        background: rgba(30, 41, 59, 0.8);
+        width: 70px;
+        height: 70px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.05);
+      }
+
+      .info-card h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+
+      .info-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      /* Modal Styling */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .modal-content {
+        background: #0f1118;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 3rem 2.5rem;
+        position: relative;
+        transform: translateY(20px) scale(0.95);
+        transition: transform 0.3s ease;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      }
+
+      .modal-overlay.active .modal-content {
+        transform: translateY(0) scale(1);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.2s;
+        padding: 0.5rem;
+      }
+
+      .modal-close:hover {
+        color: #fff;
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .modal-header-icon {
+        font-size: 2rem;
+        color: var(--primary);
+      }
+
+      .modal-title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #fff;
+      }
+
+      .modal-title span {
+        color: var(--primary);
+      }
+
+      .modal-body {
+        color: var(--text);
+        line-height: 1.7;
+      }
+
+      .modal-subtitle {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin: 1.5rem 0 0.5rem;
+      }
+
+      .modal-body ul {
+        list-style: none;
+        margin: 1rem 0;
+        padding: 0;
+      }
+
+      .modal-body li {
+        padding-left: 1.2rem;
+        position: relative;
+        margin-bottom: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      .modal-body li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: bold;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .info-cards-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .info-cards-container {
+          grid-template-columns: 1fr;
+        }
+        .modal-content {
+          padding: 2rem 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== TOP NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+      <a href="IT-club.html" class="navbar__brand">
+        <span class="navbar__brand-icon">⚙️</span>
+        IT & Robotics Club
+      </a>
+
+      <ul class="navbar__links" id="navLinks">
+        <li>
+          <a href="IT-club.html"><span class="nav-icon">🏠</span> Home</a>
+        </li>
+        <li>
+          <a href="info.html" class="active"
+            ><span class="nav-icon">ℹ️</span> Info</a
+          >
+        </li>
+        <li>
+          <a href="IT-club.html#events"
+            ><span class="nav-icon">📅</span> Events</a
+          >
+        </li>
+        <li>
+          <a href="members.html"><span class="nav-icon">👥</span> Members</a>
+        </li>
+        <li>
+          <a href="IT-club.html#contact"
+            ><span class="nav-icon">✉️</span> Contact</a
+          >
+        </li>
+        <li>
+          <a href="IT-club-login.html" class="navbar__login"
+            ><span class="nav-icon">🔐</span> Login</a
+          >
+        </li>
+      </ul>
+
+      <div class="navbar__hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section
+      class="hero"
+      style="
+        min-height: 40vh;
+        align-items: center;
+        justify-content: center;
+        padding-top: 100px;
+      "
+    >
+      <h1 style="font-size: 3rem; margin-bottom: 1rem">
+        About <span class="gradient-text">Us</span>
+      </h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem">
+        Discover what drives our community forward.
+      </p>
+    </section>
+
+    <!-- ===== THREE CARDS GRID ===== -->
+    <div class="info-cards-container">
+      <!-- Card 1 -->
+      <div class="info-card" onclick="openModal('modal-mission')">
+        <div class="info-card-icon">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <h3>Our Mission</h3>
+        <p>
+          To empower students with practical, industry-relevant tech skills
+          through hands-on projects and collaborative learning.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="info-card" onclick="openModal('modal-what-we-do')">
+        <div class="info-card-icon">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <h3>What We Do</h3>
+        <p>
+          We organize workshops, coding competitions, networking events, and
+          collaborative open-source projects.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="info-card" onclick="openModal('modal-vision')">
+        <div class="info-card-icon">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M9 18h6"></path>
+            <path d="M10 22h4"></path>
+            <path d="M12 2v1"></path>
+            <path d="M12 7v1"></path>
+            <path d="M4 12h1"></path>
+            <path d="M19 12h1"></path>
+            <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+          </svg>
+        </div>
+        <h3>Our Vision</h3>
+        <p>
+          To be the leading hub for technological innovation and excellence
+          within the TSA College campus and beyond.
+        </p>
+      </div>
+    </div>
+
+    <!-- subtle footer note -->
+    <div
+      style="
+        text-align: center;
+        margin: 2rem auto 3rem;
+        color: var(--text-muted);
+      "
+    >
+      <p>workshops ✦ competitions ✦ open source — TSA College</p>
+    </div>
+
+    <!-- ===== MODALS ===== -->
+
+    <!-- Modal: Our Mission -->
+    <div class="modal-overlay" id="modal-mission">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('modal-mission')">
+          ✕
+        </button>
+        <div class="modal-header">
+          <div class="modal-header-icon">
+            <svg
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h2 class="modal-title">Our <span>Mission</span></h2>
+        </div>
+        <div class="modal-body">
+          <p>
+            We believe in learning by doing. Our mission is to bridge the gap
+            between theoretical knowledge and practical application.
+          </p>
+          <div class="modal-subtitle">Core Objectives</div>
+          <ul>
+            <li>Provide a platform for building real-world projects.</li>
+            <li>
+              Foster a culture of continuous learning and knowledge sharing.
+            </li>
+            <li>Connect students with industry professionals and mentors.</li>
+            <li>Equip members with modern tech stacks and tools.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: What We Do -->
+    <div class="modal-overlay" id="modal-what-we-do">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('modal-what-we-do')">
+          ✕
+        </button>
+        <div class="modal-header">
+          <div class="modal-header-icon">
+            <svg
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h2 class="modal-title">What We <span>Do</span></h2>
+        </div>
+        <div class="modal-body">
+          <p>
+            We organize various activities throughout the academic year to keep
+            our members engaged and up-to-date with the latest tech trends. Our
+            calendar is packed with opportunities to grow.
+          </p>
+
+          <div class="modal-subtitle">Technical Workshops</div>
+          <p>
+            Every week, our senior members and guest speakers host deep-dive
+            sessions. Topics include:
+          </p>
+          <ul>
+            <li>Modern Web Development (React, Node.js, Next.js)</li>
+            <li>Artificial Intelligence and Machine Learning basics</li>
+            <li>
+              Cybersecurity fundamentals and capture-the-flag (CTF) strategies
+            </li>
+            <li>Cloud computing and deployment (AWS, Docker)</li>
+          </ul>
+
+          <div class="modal-subtitle">Competitions & Hackathons</div>
+          <p>
+            We host the annual <strong>TSA Hackathon</strong>, a 48-hour coding
+            marathon where students solve real-world problems. We also organize
+            monthly algorithmic coding challenges to prepare students for
+            technical interviews.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Our Vision -->
+    <div class="modal-overlay" id="modal-vision">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('modal-vision')">
+          ✕
+        </button>
+        <div class="modal-header">
+          <div class="modal-header-icon">
+            <svg
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 18h6"></path>
+              <path d="M10 22h4"></path>
+              <path d="M12 2v1"></path>
+              <path d="M12 7v1"></path>
+              <path d="M4 12h1"></path>
+              <path d="M19 12h1"></path>
+              <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+            </svg>
+          </div>
+          <h2 class="modal-title">Our <span>Vision</span></h2>
+        </div>
+        <div class="modal-body">
+          <p>
+            We envision a community where every student has the resources,
+            mentorship, and opportunities to build the future.
+          </p>
+          <p style="margin-top: 1rem">
+            To be the leading hub for technological innovation and excellence
+            within the TSA College campus and beyond. We aim to produce the next
+            generation of tech leaders, innovators, and problem solvers who will
+            make a significant impact on the industry.
+          </p>
+          <div class="modal-subtitle">Looking Ahead</div>
+          <ul>
+            <li>Expand our network of industry partnerships.</li>
+            <li>Increase open-source contributions from our members.</li>
+            <li>
+              Launch a mentorship program connecting alumni with current
+              students.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== JavaScript (same as main site + modal logic) ===== -->
+    <script src="js/script.js"></script>
+    <script>
+      // Modal Logic
+      function openModal(modalId) {
+        document.getElementById(modalId).classList.add("active");
+        document.body.style.overflow = "hidden"; // Prevent scrolling behind modal
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Close modal on clicking outside content
+      document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+        overlay.addEventListener("click", function (e) {
+          if (e.target === this) {
+            this.classList.remove("active");
+            document.body.style.overflow = "";
+          }
+        });
+      });
+
+      // Close modal on Escape key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          document
+            .querySelectorAll(".modal-overlay.active")
+            .forEach((overlay) => {
+              overlay.classList.remove("active");
+              document.body.style.overflow = "";
+            });
+        }
+      });
+    </script>
+  </body>
+</html>
