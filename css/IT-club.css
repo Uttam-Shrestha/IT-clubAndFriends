@@ -405,17 +405,18 @@ body::after {
 /* paragraph card: translucent background, no border, no rounded corners (bar goes edge to edge) */
 .paragraph-card {
   margin-bottom: 2.5rem;
-  background: rgba(255, 255, 255, 0.7); /* translucent white */
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
-  /* no border, no border-radius */
 }
 
 .paragraph-card:hover {
-  background: rgba(255, 255, 255, 0.8); /* slightly less translucent on hover */
-  box-shadow: 0 18px 36px -8px rgba(108, 99, 255, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 36px -8px rgba(108, 99, 255, 0.3);
 }
 
 .left,
@@ -423,38 +424,33 @@ body::after {
   text-align: justify;
   margin: 0;
   padding: 1.5rem 2rem;
-  color: #0a1a2f; /* dark, almost black for contrast on light bg */
+  color: var(--text);
   font-weight: 450;
   font-size: 1.1rem;
-  background: transparent; /* inherit parent translucency */
+  background: transparent;
   line-height: 1.7;
   transition: all 0.2s ease;
-  /* no border-radius, so sidebars run full height */
 }
 
 .left {
-  border-left: 10px solid var(--sidebar-dark); /* thicker, darker bar */
-  box-shadow: -2px 0 0 0 rgba(74, 66, 232, 0.2);
+  border-left: 4px solid rgba(108, 99, 255, 0.4);
 }
 
 .right {
-  border-right: 10px solid var(--sidebar-dark);
-  box-shadow: 2px 0 0 0 rgba(74, 66, 232, 0.2);
+  border-right: 4px solid rgba(108, 99, 255, 0.4);
 }
 
 .paragraph-card:hover .left {
-  border-left-color: #2a22b0; /* even darker on hover */
-  box-shadow: -4px 0 0 0 rgba(42, 34, 176, 0.3);
+  border-left-color: rgba(108, 99, 255, 0.7);
 }
 
 .paragraph-card:hover .right {
-  border-right-color: #2a22b0;
-  box-shadow: 4px 0 0 0 rgba(42, 34, 176, 0.3);
+  border-right-color: rgba(108, 99, 255, 0.7);
 }
 
 .paragraph-card:hover .left,
 .paragraph-card:hover .right {
-  color: #05101f; /* darker text on hover */
+  color: #fff;
 }
 
 /* ===== RESPONSIVE ===== */

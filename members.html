@@ -18,16 +18,18 @@
   </head>
   <body>
     <nav class="navbar" id="navbar">
-      <a href="index.html" class="navbar__brand">
+      <a href="IT-club.html" class="navbar__brand">
         <span class="navbar__brand-icon">⚙️</span>
         IT & Robotics Club
       </a>
       <ul class="navbar__links" id="navLinks">
         <li>
-          <a href="index.html"><span class="nav-icon">🏠</span> Home</a>
+          <a href="IT-club.html"><span class="nav-icon">🏠</span> Home</a>
         </li>
         <li>
-          <a href="index.html#content"><span class="nav-icon">ℹ️</span> Info</a>
+          <a href="IT-club.html#content"
+            ><span class="nav-icon">ℹ️</span> Info</a
+          >
         </li>
         <li>
           <a href="events.html"><span class="nav-icon">📅</span> Events</a>
@@ -51,98 +53,116 @@
       </div>
     </nav>
 
+    <!-- ===== HERO ===== -->
     <section class="members-hero">
       <div class="members-hero__badge">🤝 Meet the Team</div>
-      <h1>Our Club Members</h1>
-      <p>The passionate people behind IT & Robotics Club</p>
+      <h1>Our Club <span class="gradient-text">Members</span></h1>
+      <p>The passionate people driving innovation at IT & Robotics Club</p>
+    </section>
+
+    <!-- ===== EXECUTIVE SPOTLIGHT ===== -->
+    <section class="section-label">
+      <span class="section-label__chip">⭐ Leadership</span>
     </section>
 
     <div class="executive-grid">
-      <div class="executive-card">
+      <div
+        class="executive-card executive-card--president"
+        style="--delay: 0.1s"
+      >
+        <div class="executive-card__accent"></div>
         <div class="executive-card__content">
-          <div class="executive-card__title">President</div>
+          <div class="executive-card__role">President</div>
           <div class="executive-card__name">Uddhav Bahadur Shrestha</div>
-          <div class="executive-card__nickname">(Uttam Shrestha)</div>
+          <div class="executive-card__aka">aka Uttam Shrestha</div>
         </div>
       </div>
-      <div class="executive-card">
+      <div class="executive-card executive-card--vp" style="--delay: 0.2s">
+        <div class="executive-card__accent"></div>
         <div class="executive-card__content">
-          <div class="executive-card__title">Vice‑President</div>
+          <div class="executive-card__role">Vice‑President</div>
           <div class="executive-card__name">Nishan Bhandari</div>
         </div>
       </div>
     </div>
 
-    <div class="section-divider">
-      <h2>📋 Board Members</h2>
-    </div>
-    <div class="members-container">
-      <div class="member-card">
-        <div class="member-card__content">
-          <div class="member-card__title"><i>📌</i> Board</div>
-          <ul class="member-list">
-            <li><span class="member-name">Surakshya Chaudhary</span></li>
-            <li><span class="member-name">Karishma Maya Dhenga</span></li>
-            <li><span class="member-name">Subash Shrestha</span></li>
-            <li><span class="member-name">Prayesh Shrestha</span></li>
-            <li><span class="member-name">Prithivi Raimajhi</span></li>
-            <li><span class="member-name">Sanjeev Moktan</span></li>
-            <li><span class="member-name">Sumi Shrestha</span></li>
-          </ul>
+    <!-- ===== BOARD MEMBERS ===== -->
+    <section class="section-label">
+      <span class="section-label__chip">📋 Board Members</span>
+    </section>
+
+    <div class="members-grid">
+      <div class="dept-card dept-card--board" style="--delay: 0.15s">
+        <div class="dept-card__header">
+          <span class="dept-card__icon">📌</span>
+          <h3 class="dept-card__title">Board</h3>
         </div>
+        <ul class="dept-card__list">
+          <li>Surakshya Chaudhary</li>
+          <li>Karishma Maya Dhenga</li>
+          <li>Subash Shrestha</li>
+          <li>Prayesh Shrestha</li>
+          <li>Prithivi Raimajhi</li>
+          <li>Sanjeev Moktan</li>
+          <li>Sumi Shrestha</li>
+        </ul>
       </div>
     </div>
 
-    <div class="members-container">
-      <div class="member-card">
-        <div class="member-card__content">
-          <div class="member-card__title"><i>📱</i> Social Media</div>
-          <ul class="member-list">
-            <li><span class="member-name">Subhash Shrestha</span></li>
-          </ul>
+    <!-- ===== DEPARTMENTS ===== -->
+    <section class="section-label">
+      <span class="section-label__chip">🏢 Departments</span>
+    </section>
+
+    <div class="members-grid members-grid--departments">
+      <div class="dept-card dept-card--social" style="--delay: 0.1s">
+        <div class="dept-card__header">
+          <span class="dept-card__icon">📱</span>
+          <h3 class="dept-card__title">Social Media</h3>
         </div>
+        <ul class="dept-card__list">
+          <li>Subhash Shrestha</li>
+        </ul>
       </div>
 
-      <div class="member-card">
-        <div class="member-card__content">
-          <div class="member-card__title">
-            <i>📸</i> Photography & Videography
-          </div>
-          <ul class="member-list">
-            <li><span class="member-name">Prayesh Shrestha</span></li>
-            <li><span class="member-name">Akriti Rimal</span></li>
-            <li><span class="member-name">Hiralal Gole</span></li>
-          </ul>
+      <div class="dept-card dept-card--photo" style="--delay: 0.2s">
+        <div class="dept-card__header">
+          <span class="dept-card__icon">📸</span>
+          <h3 class="dept-card__title">Photography & Videography</h3>
         </div>
+        <ul class="dept-card__list">
+          <li>Prayesh Shrestha</li>
+          <li>Akriti Rimal</li>
+          <li>Hiralal Gole</li>
+        </ul>
       </div>
 
-      <div class="member-card">
-        <div class="member-card__content">
-          <div class="member-card__title"><i>💰</i> Treasurer</div>
-          <ul class="member-list">
-            <li><span class="member-name">Nishan Bhandari</span></li>
-          </ul>
+      <div class="dept-card dept-card--treasurer" style="--delay: 0.3s">
+        <div class="dept-card__header">
+          <span class="dept-card__icon">💰</span>
+          <h3 class="dept-card__title">Treasurer</h3>
         </div>
+        <ul class="dept-card__list">
+          <li>Nishan Bhandari</li>
+        </ul>
       </div>
 
-      <div class="member-card">
-        <div class="member-card__content">
-          <div class="member-card__title">
-            <i>💻</i> Editing & Web Development
-          </div>
-          <ul class="member-list">
-            <li><span class="member-name">Subhash Shrestha</span></li>
-          </ul>
+      <div class="dept-card dept-card--dev" style="--delay: 0.4s">
+        <div class="dept-card__header">
+          <span class="dept-card__icon">💻</span>
+          <h3 class="dept-card__title">Editing & Web Development</h3>
         </div>
+        <ul class="dept-card__list">
+          <li>Subhash Shrestha</li>
+        </ul>
       </div>
     </div>
 
-    <div
-      style="text-align: center; margin: 3rem auto; color: var(--text-muted)"
-    >
-      <p>✶ active members ✶</p>
+    <!-- ===== FOOTER BADGE ===== -->
+    <div class="members-footer">
+      <span class="members-footer__badge">✶ active members ✶</span>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/members.js"></script>
   </body>
 </html>
